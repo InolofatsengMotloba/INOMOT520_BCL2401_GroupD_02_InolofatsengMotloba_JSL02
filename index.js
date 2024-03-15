@@ -14,18 +14,21 @@ const displayWorkoutRoutine = () => {
 
 document.querySelector('#submitWorkout').addEventListener('click', displayWorkoutRoutine);
 
-// ⚠️⚠️⚠️ Lesson 3: Creating and Removing Elements ⚠️⚠️⚠️
+// ⚠️⚠️⚠️ Creating and Removing Elements ⚠️⚠️⚠️
 // Function to add new fitness goals and remove completed ones
-// NOW LET'S DEBUG TO PREVENT DUPLICATE GOALS FROM BEING SUBMITTED 🚀
 
 const addNewGoal = () => {
     const goalInput = document.querySelector('#goalInput').value;
     const goalList = document.querySelector('#goalList');
     
-    // ⚠️ Hint 1: Check for duplicates
-    // Use 'goalList' to get all existing goals and check if 'goalInput' matches any of them.
+    // Check for duplicates
+    // 'goalList' gets all existing goals from the DOM and stores them in 'existingGoals'
     const existingGoals = goalList.querySelectorAll('li');
+
+    //A Variable to track if the goal is a duplicated
     let isDuplicate = false;
+
+    // Checks if text content of the goal matches any of the input goals.
     existingGoals.forEach((goal) => {
         if (goal.textContent === goalInput) {
             isDuplicate = true;
@@ -33,14 +36,11 @@ const addNewGoal = () => {
         }
     });
 
-    // ⚠️ Hint 2: Prevent duplicates
-    // If a duplicate is found, display an alert to the user and don't add the goal to the list.
+    // Displays an alert to the user if a duplicate is found and doesn't add the goal to the list.
     if (isDuplicate) {
         alert("Goal already exists!");
         return;
     }
-
-    // If it's not a duplicate, proceed with adding it as a new goal.
     
     // ⚠️ Hint 3: Code structure
     // You might want to wrap the duplicate-checking logic in an 'if' statement.
